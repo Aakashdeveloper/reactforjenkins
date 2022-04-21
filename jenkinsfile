@@ -3,14 +3,13 @@ pipeline {
     stages {
         stage("Install") {
             steps {
-                sh "sudo npm install"
+                sh "npm install"
             }
         }
         stage("Build") {
             steps {
-                sh "sudo npm run build"
+                sh "npm run build"
             }
         }
     }
-    jenkins ALL=(ALL) NOPASSWD: ALL
 }
