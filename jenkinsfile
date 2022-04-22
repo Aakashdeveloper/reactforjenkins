@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
+    agent any
     tools {nodejs "NodeJS"}
     stages {
         stage("Install") {
@@ -15,6 +10,12 @@ pipeline {
         stage("Build") {
             steps {
                 sh "npm run build"
+            }
+        }
+        stage("Deploy") {
+            steps {
+                sh "del -rf /var/www/react-app"
+                sh "cp - r ${WORKSPACE}/build/ /var/www/react-app"
             }
         }
     }
