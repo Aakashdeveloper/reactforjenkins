@@ -7,7 +7,7 @@ class Header extends Component {
         super(props)
 
         this.state={
-            title:'React App',
+            title:'React Jenkins App',
             keyword:'User Input here'
         }
     }
